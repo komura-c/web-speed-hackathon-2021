@@ -24,9 +24,11 @@ const config = {
   },
   devtool: NODE_ENV === 'production' ? false : 'inline-source-map',
   entry: {
-    style: path.resolve(SRC_PATH, './index.css'),
-    buildinfo: path.resolve(SRC_PATH, './buildinfo.js'),
-    index: path.resolve(SRC_PATH, './index.jsx'),
+    main: [
+      path.resolve(SRC_PATH, './index.css'),
+      path.resolve(SRC_PATH, './buildinfo.js'),
+      path.resolve(SRC_PATH, './index.jsx'),
+    ],
   },
   mode: NODE_ENV,
   module: {
