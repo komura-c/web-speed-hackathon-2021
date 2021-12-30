@@ -9,6 +9,8 @@ const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
+const NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
 /** @type {import('webpack').Configuration} */
 const config = {
   devServer: {
@@ -20,18 +22,13 @@ const config = {
     },
     static: [PUBLIC_PATH, UPLOAD_PATH],
   },
-  devtool: 'inline-source-map',
+  devtool: NODE_ENV === 'production' ? false : 'inline-source-map',
   entry: {
-    main: [
-      'core-js',
-      'regenerator-runtime/runtime',
-      'jquery-binarytransport',
-      path.resolve(SRC_PATH, './index.css'),
-      path.resolve(SRC_PATH, './buildinfo.js'),
-      path.resolve(SRC_PATH, './index.jsx'),
-    ],
+    style: path.resolve(SRC_PATH, './index.css'),
+    buildinfo: path.resolve(SRC_PATH, './buildinfo.js'),
+    index: path.resolve(SRC_PATH, './index.jsx'),
   },
-  mode: 'none',
+  mode: NODE_ENV,
   module: {
     rules: [
       {
@@ -40,6 +37,7 @@ const config = {
         use: [{ loader: 'babel-loader' }],
       },
       {
+        exclude: /node_modules/,
         test: /\.css$/i,
         use: [
           { loader: MiniCssExtractPlugin.loader },
