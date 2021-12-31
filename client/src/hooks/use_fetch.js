@@ -45,7 +45,7 @@ export function useFetch(apiPath, fetcher) {
         isLoading: false,
       }));
     });
-  }, [apiPath, fetcher]);
+  }, []);
 
   return result;
 }

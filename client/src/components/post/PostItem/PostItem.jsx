@@ -14,6 +14,8 @@ import { SoundArea } from '../../post/SoundArea';
 
 /** @type {React.VFC<Props>} */
 const PostItem = ({ post }) => {
+  const postCreatedAt = moment(post.createdAt);
+
   return (
     <article className="px-1 sm:px-4">
       <div className="pb-4 pt-4 px-4 border-b border-gray-300">
@@ -58,9 +60,7 @@ const PostItem = ({ post }) => {
           ) : null}
           <p className="mt-2 text-sm sm:mt-4">
             <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
-              <time dateTime={moment(post.createdAt).toISOString()}>
-                {moment(post.createdAt).locale('ja').format('LL')}
-              </time>
+              <time dateTime={postCreatedAt.toISOString()}>{postCreatedAt.locale('ja').format('LL')}</time>
             </Link>
           </p>
         </div>

@@ -29,7 +29,7 @@ const AspectRatioBox = ({ aspectHeight, aspectWidth, children }) => {
     return () => {
       window.removeEventListener('resize', calcStyle);
     };
-  }, [aspectHeight, aspectWidth]);
+  }, []);
 
   return (
     <div ref={ref} className="relative w-full h-1" style={{ height: clientHeight }}>

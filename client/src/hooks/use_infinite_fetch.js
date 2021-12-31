@@ -66,7 +66,7 @@ export function useInfiniteFetch(apiPath, fetcher) {
         offset,
       };
     });
-  }, [apiPath, fetcher]);
+  }, []);
 
   React.useEffect(() => {
     setResult(() => ({
@@ -80,7 +80,7 @@ export function useInfiniteFetch(apiPath, fetcher) {
     };
 
     fetchMore();
-  }, [fetchMore]);
+  }, []);
 
   return {
     ...result,
