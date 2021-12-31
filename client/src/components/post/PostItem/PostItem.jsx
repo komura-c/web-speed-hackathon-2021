@@ -1,4 +1,5 @@
-import moment from 'moment';
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/ja';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ import { SoundArea } from '../../post/SoundArea';
 
 /** @type {React.VFC<Props>} */
 const PostItem = ({ post }) => {
-  const postCreatedAt = moment(post.createdAt);
+  const createdAt = dayjs(post.createdAt);
 
   return (
     <article className="px-1 sm:px-4">
@@ -60,7 +61,7 @@ const PostItem = ({ post }) => {
           ) : null}
           <p className="mt-2 text-sm sm:mt-4">
             <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
-              <time dateTime={postCreatedAt.toISOString()}>{postCreatedAt.locale('ja').format('LL')}</time>
+              <time dateTime={createdAt.toISOString()}>{createdAt.locale('ja').format('YYYY年M月D日')}</time>
             </Link>
           </p>
         </div>

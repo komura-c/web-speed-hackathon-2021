@@ -1,4 +1,5 @@
-import moment from 'moment';
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/ja';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +12,8 @@ import { getProfileImagePath } from '../../../utils/get_path';
 
 /** @type {React.VFC<Props>} */
 const CommentItem = ({ comment }) => {
+  const createdAt = dayjs(comment.createdAt);
+
   return (
     <article className="px-1 hover:bg-gray-50 sm:px-4">
       <div className="flex pb-4 pt-2 px-2 border-b border-gray-300 sm:px-4">
@@ -33,9 +36,7 @@ const CommentItem = ({ comment }) => {
           </p>
           <p className="text-gray-800 text-sm leading-relaxed">{comment.text}</p>
           <p className="text-gray-500 text-xs">
-            <time dateTime={moment(comment.createdAt).toISOString()}>
-              {moment(comment.createdAt).locale('ja').format('LL')}
-            </time>
+            <time dateTime={createdAt.toISOString()}>{createdAt.locale('ja').format('YYYY年M月D日')}</time>
           </p>
         </div>
       </div>
