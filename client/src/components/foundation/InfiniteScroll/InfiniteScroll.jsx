@@ -42,7 +42,7 @@ const InfiniteScroll = ({ children, fetchMore, items }) => {
       document.removeEventListener('resize', handler);
       document.removeEventListener('scroll', handler);
     };
-  }, []);
+  }, [latestItem]);
 
   return <>{children}</>;
 };
