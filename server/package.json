@@ -10,7 +10,7 @@
     "start": "node build/index.js",
     "prestart:clean": "rimraf ../upload",
     "prestart:init": "mkdirp ../upload/images ../upload/movies ../upload/sounds",
-    "dev": "babel-node src/index.js"
+    "develop": "babel-node src/index.js"
   },
   "dependencies": {
     "@babel/core": "7.16.0",

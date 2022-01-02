@@ -4,7 +4,7 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "start": "yarn workspace @web-speed-hackathon-2021/server start",
-    "dev": "yarn workspace @web-speed-hackathon-2021/client develop"
+    "develop": "yarn workspace @web-speed-hackathon-2021/client develop"
   },
   "workspaces": [
     "client",
